@@ -26,9 +26,11 @@ class WordPreviewer:
 				chinese = items[1]
 				chineses = chinese.split('；')
 				self.word[nownum].setdefault(english, chineses)
+
 		f.close()
-	def show(self, english, chinese):
+	def show(self, unit, english, chinese):
 		os.system("clear")
+		print "\t"+unit
 		print "\t"+english
 		print "Next?:",
 		sys.stdin.read(1)
@@ -47,8 +49,11 @@ class WordPreviewer:
 			print 
 			print "\t\t\t" + units
 			for (english, chinese) in content.items():
-				self.show(english,chinese)
+				self.show(units,english,chinese)
 				buffers.setdefault(english,chinese)
+			for (english, chinese) in content.items():
+				self.show(units,english, chinese)
+				buffers.setdefault(english, chinese)
 			now_units = now_units + 1
 			if (now_units==5):
 				now_units = 0
@@ -57,7 +62,7 @@ class WordPreviewer:
 				print
 				print "\t\t\t>>>>>>>>>>>>>>>>>>>>Shuffle in " + self.file+" Half<<<<<<<<<<<<<<<<<<<<"
 				for (english, chinese) in buffers.items():
-					self.show(english, chinese)
+					self.show(units,english, chinese)
 					shuffle.setdefault(english,chinese)
 				buffers = {}
 				now_para = now_para + 1
@@ -68,8 +73,8 @@ class WordPreviewer:
 					print
 					print "\t\t\t>>>>>>>>>>>>>>>>>>>>Shuffle in " + self.file+" Whole<<<<<<<<<<<<<<<<<<<<"
 					for (english, chinese) in shuffle.items():
-						self.show(english, chinese)
+						self.show(units,english, chinese)
 					shuffle = {}
 a = WordPreviewer()
-a.load("data/List16.txt")
+a.load("data/List11.txt")
 a.display()
