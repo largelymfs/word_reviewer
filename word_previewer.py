@@ -71,5 +71,5 @@ class WordPreviewer:
 						self.show(english, chinese)
 					shuffle = {}
 a = WordPreviewer()
-a.load("List16.txt")
+a.load("data/List16.txt")
 a.display()
