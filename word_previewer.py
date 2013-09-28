@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 import sys
 import os
 class WordPreviewer:
@@ -22,14 +24,16 @@ class WordPreviewer:
 				items = line.split("@")
 				english = items[0]
 				chinese = items[1]
-				self.word[nownum].setdefault(english, chinese)
+				chineses = chinese.split('；')
+				self.word[nownum].setdefault(english, chineses)
 		f.close()
 	def show(self, english, chinese):
 		os.system("clear")
 		print "\t"+english
 		print "Next?:",
 		sys.stdin.read(1)
-		print "\t"+english+"   "+chinese
+		for item in chinese:
+			print "\t"+item
 		sys.stdin.read(1)
 		print 
 	def display(self):
