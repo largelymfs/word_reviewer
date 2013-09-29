@@ -75,6 +75,7 @@ class WordPreviewer:
 					for (english, chinese) in shuffle.items():
 						self.show(units,english, chinese)
 					shuffle = {}
+filename = "data/"+sys.argv[1]+".txt"
 a = WordPreviewer()
-a.load("data/List11.txt")
+a.load(filename)
 a.display()
