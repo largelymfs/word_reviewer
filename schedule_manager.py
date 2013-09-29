@@ -1,3 +1,4 @@
+import sys
 class ScheduleManager:
 	def __init__(self, filename):
 		self.dic = {}
@@ -80,5 +81,7 @@ class ScheduleManager:
 		finally:
 			f.close()
 a = ScheduleManager("schedule.txt")
-a.insert("20130928","List16")
+date = sys.argv[1]
+listname = sys.argv[2]
+a.insert(date, listname)
 a.createfile("schedule.txt")
